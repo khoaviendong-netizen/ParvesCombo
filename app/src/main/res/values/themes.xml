@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="Theme.SocksTun" parent="android:style/Theme.Material.NoActionBar">
+		<item name="android:fontFamily">sans-serif</item>
+		<item name="android:colorAccent">@color/premium_cyan</item>
+		<item name="android:colorControlNormal">@color/premium_muted</item>
+		<item name="android:colorControlActivated">@color/premium_cyan</item>
+		<item name="android:colorControlHighlight">#336FDFF1</item>
+		<item name="android:windowBackground">@color/premium_bg</item>
+		<item name="android:colorBackground">@color/premium_bg</item>
+		<item name="android:textColorPrimary">@color/premium_text</item>
+		<item name="android:textColorSecondary">@color/premium_muted</item>
+		<item name="android:textColorHint">@color/premium_muted</item>
+		<item name="android:navigationBarColor">@color/premium_bg</item>
+		<item name="android:statusBarColor">@color/premium_bg</item>
+		<item name="android:windowLightStatusBar">false</item>
+		<item name="android:alertDialogTheme">@style/Premium.Dialog</item>
+		<item name="android:windowActionModeOverlay">true</item>
+	</style>
+    <style name="Premium.Dialog" parent="android:style/Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">@color/premium_cyan</item>
+        <item name="android:colorBackground">@color/premium_card</item>
+        <item name="android:windowBackground">@drawable/premium_card</item>
+        <item name="android:textColorPrimary">@color/premium_text</item>
+        <item name="android:textColorSecondary">@color/premium_muted</item>
+        <item name="android:textColorHint">@color/premium_muted</item>
+        <item name="android:colorControlActivated">@color/premium_cyan</item>
+    </style>
+    <style name="Premium.FieldLabel" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">7dp</item>
+        <item name="android:textColor">@color/premium_text</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="Premium.Input" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/premium_text</item>
+        <item name="android:textColorHint">@color/premium_muted</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:background">@drawable/premium_card</item>
+        <item name="android:padding">14dp</item>
+    </style>
+</resources>

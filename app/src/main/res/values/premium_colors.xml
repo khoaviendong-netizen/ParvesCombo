@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="premium_bg">#091323</color>
+    <color name="premium_card">#132338</color>
+    <color name="premium_border">#263B50</color>
+    <color name="premium_text">#EDF6FF</color>
+    <color name="premium_muted">#8AA2BA</color>
+    <color name="premium_cyan">#00DCEB</color>
+    <color name="premium_red">#FF6278</color>
+    <item type="id" name="tab_proxies"/>
+    <item type="id" name="tab_numbers"/>
+    <item type="id" name="tab_apps"/>
+    <item type="id" name="tab_quick_copy"/>
+</resources>
