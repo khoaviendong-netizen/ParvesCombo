@@ -1,0 +1,8 @@
+.gradle
+app/.externalNativeBuild
+app/build
+local.properties
+debug.keystore
+store.properties
+release/*.apk
+release/*.idsig

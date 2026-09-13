@@ -1,0 +1,51 @@
+name: Build Parves Combo Premium
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  apk:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Prepare Android 34 tools
+        shell: bash
+        run: |
+          combo_sdk_dir="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          test -n "$combo_sdk_dir"
+          combo_sdkmanager="$combo_sdk_dir/cmdline-tools/latest/bin/sdkmanager"
+          test -x "$combo_sdkmanager"
+          set +o pipefail
+          yes | "$combo_sdkmanager" --licenses > /dev/null
+          set -o pipefail
+          "$combo_sdkmanager" 'platforms;android-34' 'build-tools;34.0.0'
+      - name: Compile unsigned APK
+        shell: bash
+        run: |
+          combo_sdk_dir="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          bash manual_build.sh "$combo_sdk_dir" --unsigned
+          cp "$combo_sdk_dir/build-tools/34.0.0/lib/apksigner.jar" release/apksigner.jar
+          "$combo_sdk_dir/build-tools/34.0.0/aapt2" dump badging release/ParvesCombo-Premium-v3.2-unsigned.apk | tee release/build-info.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ParvesCombo-Premium-v3.2-unsigned
+          path: |
+            release/ParvesCombo-Premium-v3.2-unsigned.apk
+            release/build-info.txt
+          if-no-files-found: error
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-apksigner34
+          path: release/apksigner.jar
+          if-no-files-found: error
+          retention-days: 7

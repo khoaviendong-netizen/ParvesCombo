@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/premium_bg">
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:fillViewport="true" android:clipToPadding="false">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="18dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:minHeight="52dp" android:orientation="horizontal" android:gravity="center_vertical">
+                <ImageView android:layout_width="38dp" android:layout_height="38dp"
+                    android:src="@mipmap/sockstun" android:importantForAccessibility="no"
+                    android:scaleType="fitCenter"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:layout_marginStart="12dp"
+                    android:text="@string/app_name" android:textSize="21sp"
+                    android:textColor="@color/premium_text" android:fontFamily="sans-serif-medium"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:layout_marginBottom="14dp"
+                android:gravity="center_vertical" android:orientation="horizontal">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="@string/proxy_title"
+                    android:textSize="28sp" android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/premium_text"/>
+                <TextView android:id="@+id/remaining_badge" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:textColor="@color/premium_muted"
+                    android:textSize="12sp" android:paddingStart="8dp"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/premium_card" android:orientation="vertical" android:padding="8dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical">
+                    <Button android:id="@+id/profile_prev" android:layout_width="48dp"
+                        android:layout_height="48dp" android:contentDescription="Previous profile"
+                        android:text="‹" android:textSize="30sp"/>
+                    <TextView android:id="@+id/profile_name" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:padding="4dp" android:gravity="center" android:textSize="17sp"
+                        android:textColor="@color/premium_text" android:fontFamily="sans-serif-medium"/>
+                    <Button android:id="@+id/profile_next" android:layout_width="48dp"
+                        android:layout_height="48dp" android:contentDescription="Next profile"
+                        android:text="›" android:textSize="30sp"/>
+                    <Button android:id="@+id/profile_menu" android:layout_width="48dp"
+                        android:layout_height="48dp" android:contentDescription="Profile options"
+                        android:text="@string/profile_menu" android:textSize="25sp"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:paddingStart="6dp" android:paddingEnd="10dp" android:paddingTop="4dp" android:paddingBottom="6dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:background="@drawable/premium_tag" android:text="SOCKS5" android:textSize="12sp"
+                        android:textColor="@color/premium_cyan" android:fontFamily="sans-serif-medium"
+                        android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="6dp" android:paddingBottom="6dp"/>
+                    <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+                    <TextView android:id="@+id/premium_proxy_state" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="●  OFF" android:textSize="13sp"
+                        android:textColor="@color/premium_muted" android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView style="@style/Premium.FieldLabel" android:labelFor="@+id/socks_addr" android:text="@string/socks_addr"/>
+            <EditText android:id="@id/socks_addr" style="@style/Premium.Input"
+                android:hint="proxy.example.com" android:inputType="textUri" android:imeOptions="actionNext"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="6dp">
+                    <TextView style="@style/Premium.FieldLabel" android:labelFor="@+id/socks_port" android:text="@string/socks_port"/>
+                    <EditText android:id="@id/socks_port" style="@style/Premium.Input"
+                        android:hint="1080" android:inputType="number" android:imeOptions="actionNext"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="6dp">
+                    <TextView style="@style/Premium.FieldLabel" android:labelFor="@+id/dns_ipv4" android:text="@string/dns_ipv4"/>
+                    <EditText android:id="@id/dns_ipv4" style="@style/Premium.Input"
+                        android:hint="1.1.1.1" android:digits="0123456789." android:inputType="numberDecimal" android:imeOptions="actionNext"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView style="@style/Premium.FieldLabel" android:labelFor="@+id/socks_user" android:text="@string/socks_user"/>
+            <EditText android:id="@id/socks_user" style="@style/Premium.Input"
+                android:hint="Enter username" android:inputType="text" android:imeOptions="actionNext"/>
+            <TextView style="@style/Premium.FieldLabel" android:labelFor="@+id/socks_pass" android:text="@string/socks_pass"/>
+            <EditText android:id="@id/socks_pass" style="@style/Premium.Input"
+                android:hint="Enter password" android:inputType="textPassword" android:imeOptions="actionDone"/>
+            <Button android:id="@+id/save" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:minHeight="52dp" android:layout_marginTop="16dp" android:text="Save Profile"/>
+            <Button android:id="@+id/control" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:minHeight="54dp" android:layout_marginTop="10dp" android:text="Enable Proxy"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" android:gravity="center"
+                android:text="@string/floating_help" android:textColor="@color/premium_muted"
+                android:textSize="11sp" android:lineSpacingExtra="3dp"/>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:id="@+id/premium_nav_host" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="vertical"/>
+</LinearLayout>
