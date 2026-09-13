@@ -49,34 +49,3 @@ jobs:
           path: release/apksigner.jar
           if-no-files-found: error
           retention-days: 7
-
-  preserve-build:
-    needs: apk
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
-      - uses: actions/download-artifact@v4
-        with:
-          name: ParvesCombo-Premium-v3.2-unsigned
-          path: artifacts
-      - uses: actions/download-artifact@v4
-        with:
-          name: android-apksigner34
-          path: artifacts
-      - name: Preserve unsigned build outputs in a private branch
-        shell: bash
-        run: |
-          gzip -n artifacts/apksigner.jar
-          sha256sum artifacts/ParvesCombo-Premium-v3.2-unsigned.apk artifacts/apksigner.jar.gz > artifacts/SHA256SUMS
-          git switch -c "artifacts/run-${GITHUB_RUN_ID}"
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- artifacts/ParvesCombo-Premium-v3.2-unsigned.apk artifacts/apksigner.jar.gz artifacts/build-info.txt artifacts/SHA256SUMS
-          git commit -m 'Preserve unsigned Android build outputs for local signing'
-          git push origin "HEAD:refs/heads/artifacts/run-${GITHUB_RUN_ID}"
