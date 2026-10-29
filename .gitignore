@@ -6,3 +6,14 @@ debug.keystore
 store.properties
 release/*.apk
 release/*.idsig
+
+# Local credentials and signing material
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
